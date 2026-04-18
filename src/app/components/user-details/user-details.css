@@ -1,0 +1,48 @@
+.details{
+    background-color: bisque;
+    border: 2px solid black;
+    display:inline-block;
+    margin:10px;
+    width:350px;
+    height: 150px;
+    text-align: center;
+    border-radius:10px;
+    
+    
+}
+.details:hover{
+    background-color: brown;
+    font-size: 20px;
+}
+/* .listView::before{
+    content:"-----------"
+} */
+#buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#table{
+    margin:180px;
+    height:250px;
+    width:50%;
+    text-align:center;
+  
+}
+#listView{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+tr:hover{
+    background-color: brown;
+    font-size: larger;
+
+}
+/* .bg-pink{
+    background-color: pink;
+
+}
+.bg-blue{
+    background-color: blue;
+} */

@@ -1,0 +1,95 @@
+<!-- <h1>my first angular app</h1>
+<h2> {{title}}</h2>
+<button (click)="changeTitle()"> change the title</button> -->
+
+<!-- <div class="user-details">
+ <p>Name: {{user.name}}</p>
+ <p>Age: {{user.age}}</p>
+ <p>Phone Numbers: {{user.phoneNumbers}}</p>
+
+</div> -->
+<!-- <br> -->
+<!-- <div class="parentContainer">
+@for(user of users;track user.name){
+  <div class="user-details"
+    [class.bg-blue]="user.gender==='male'" 
+     
+    [class.bg-pink]="user.gender==='female'">  -->
+    <!-- this is angular property binding that works upon condition if condition is true ,
+      the property will be applied else not 
+      Property binding is a way to bind a value from your component (TypeScript) to an HTML element property -->
+
+
+  <!-- <p>Name: {{user.name}}</p>
+  <p>Address: {{user.address}}</p>
+ <p>Age: {{user.age}}</p>
+ <img [src]="user.pic"> -->
+
+ <!-- <img src="{{user.pic}}"> -->
+
+ <!-- <input type="text" disabled="{{user.edit}}"> // string interpolation doesnt work with non string datatype -->
+  <!-- <br>
+ <input type="text"[disabled]="user.edit">  -->
+
+ <!-- @if(user.gender==='female'){
+  <div>you are a girl</div>
+ }
+ @else{
+  <div>you are a boy</div>
+ } -->
+
+ <!-- @switch(user.gender){
+  @case('male'){<div>you are a boy</div>}
+  @case('female'){<div>you are a girl</div>}
+ } -->
+
+ <!-- </div>
+ <br>
+
+} -->
+<!-- </div> -->
+<!-- for sending single user data -->
+<!-- <app-user-details name="anugya" [age]='45' gender="female"/>  -->
+
+<!-- 
+@for(user of userDetails;track user.name){
+  <app-user-details (onupdate)="parentAction($event)"name="{{user.name}}" [age]="user.age" gender="{{user.gender}}"/>
+}  -->
+<!-- <app-user-details (onupdate)='parentAction($event)' [userDetails]="userDetails"></app-user-details> -->
+
+<!-- <h2> {{title}}</h2>
+PIPING -->
+
+<!-- <h2>Date:{{date | date:"d/M/y"}}</h2>
+<h2>{{123434.343 | currency:'CAD'}}</h2> -->
+
+<!--  TWO WAY BINDING::
+  [(ngModel)]='varible'
+  []->send data from ts to html 
+  () -> send data from html to ts
+   ngModel- two way binding between html and ts-->
+
+<!-- Enter the title: <input type="text" [(ngModel)]="title">
+<br>
+or we can go for manual way
+
+<input type="text" [value]="like" (input)="changeValue($event)">
+<br>
+
+your name: {{like}}
+<br> -->
+
+<!-- <button (click)="showPrevious()">prev</button>
+<button (click)="showNext()"> next</button>
+
+<button (click)="showPrevious()" [disabled]="start==0">prev</button>
+<button (click)="showNext()" [disabled]="start+pageSize>=laptopDetails.length">Next</button>
+
+<app-laptop-details [laptopDetails]="laptopDetails"></app-laptop-details> -->
+<input placeholder="write the customer name to search" [(ngModel)]="searchName"(input)="onSearch()">
+<!-- <app-customer-list [customerData]="filteredCustomers"></app-customer-list> -->
+<app-customer-list [customerData]="filteredCustomers.slice(start, start + pageSize)"></app-customer-list>
+<button (click)="previousData()" [disabled]="start==0">prev</button>
+<button (click)="nextData()" [disabled]="start+pageSize>=filteredCustomers.length">Next</button>
+
+<router-outlet />

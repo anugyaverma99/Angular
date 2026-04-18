@@ -1,0 +1,37 @@
+
+<h1 style="text-align: center;"> Laptop Details</h1>
+<div id="details">
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+    @for(laptopDetail of laptopDetails;track laptopDetail.id){
+        <tr>
+        <td>{{laptopDetail.id}}</td>
+        <td>{{laptopDetail.brand}}</td>
+        <td>{{laptopDetail.price}}</td>
+        <td><img src="{{laptopDetail.img}} "style="height:120px "></td>
+        </tr>
+    }
+</table>
+
+
+</div>
+<h1 style="text-align: center;"> In card format</h1>
+<div >
+    @for(laptopDetail of laptopDetails;track laptopDetail.id){
+        <div id="cardLayout">
+            <div style="background-color: grey;">
+            <p><img src="{{laptopDetail.img}}" style="height:120px"></p>
+            </div>
+            <p>{{laptopDetail.id}}</p>
+            <div (mouseover)="highlight()"[class.highlighted]="highlighted"><p>{{laptopDetail.brand}}</p></div>
+            <p>{{laptopDetail.price}}</p>
+            
+        </div>
+    }
+    
+</div>

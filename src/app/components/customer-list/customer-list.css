@@ -1,0 +1,12 @@
+#content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+table{
+    height:270px;
+    width:60%;
+    text-align:center;
+}

@@ -1,0 +1,25 @@
+<p>customer-list works!</p>
+<div id="content">
+<table border="1">
+    <tr>
+        <th><b>ID</b></th>
+        <th><b>Name</b></th>
+        <th><b>Address</b></th>
+        <th><b>Gender</b></th>
+        <th><b>Date Of Birth</b></th>
+    </tr>
+    
+@for (customer of customerData;track customer.id){
+    <tr>
+    <td>{{customer.id}}</td>
+    <td>{{customer.name}}</td>
+    <td>{{customer.address}}</td>
+    <td>{{customer.gender}}</td>
+    <td>{{customer.dateOfBirth}}</td>
+    </tr>
+}
+</table>
+</div>
+<br>
+<!-- <button (click)="previousData()">prev</button>
+<button (click)="nextData()">next</button> -->

@@ -1,0 +1,37 @@
+#details{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+   
+
+}
+table{
+    width:70%;
+    border-collapse: separate;
+    border-radius: 10px;
+    border-collapse: collapse;    
+    
+}
+tr{
+    text-align:center;
+}
+#cardLayout{
+    background-color: cadetblue;
+    display: inline-block;
+    width:320px;
+    border:2px solid black;
+    margin:10px;
+    text-align: center;
+    font-size: 17px;
+    border-radius: 10px;
+}
+#cardLayout:hover{
+    height: 380px;
+    width:370px;
+    font-size: larger;
+
+}
+
+.highlighted{
+    background-color: lightblue;
+}

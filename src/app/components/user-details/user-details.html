@@ -1,0 +1,54 @@
+<!-- <p>user-details works!</p> -->
+<!-- <div class="user-details">
+   <div>name:{{name}}</div>
+   <div>gender:{{gender}}</div>
+   <div>age:{{age}}</div>
+</div> -->
+
+<h1 style="text-align:center"> Ways to display User Data</h1>
+<div id="buttons">
+ <button (click)="cardView()">Card view</button>
+<button (click)="listView()">list view</button>
+</div>
+<br>
+ @if(isCardView){
+@for (user of userDetails;track user.name){
+<div class="details">
+    <p><b>Name: </b>{{user.name}}</p>
+    <p><b>Age: </b>{{user.age}}</p>
+    <div [class.bg-blue]="user.gender==='male'" 
+     
+    [class.bg-pink]="user.gender==='female'" ><b>Gender: </b>
+      {{user.gender}}</div>
+      <button (click)="informParents(user)">update the data</button>
+      <button (Click)="deleteUser(user)">delete user</button>
+</div>
+}
+
+} 
+@else{
+   <div id="listView">
+   <table border="1" id="table">
+      <tr>
+         <th><b>Name</b></th>
+         <th><b>Gender</b></th>
+         <th><b>Age</b></th>
+      </tr>
+   @for (user of userDetails;track user.name){
+    
+    <tr>
+   <td>{{user.name}}</td>
+    <td>{{user.gender}}</td>
+    <td>{{user.age}}</td>
+    </tr>
+   
+        
+   }
+
+    </table>
+    </div>
+  
+}
+
+
+
