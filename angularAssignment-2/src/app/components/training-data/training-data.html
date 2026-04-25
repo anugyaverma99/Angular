@@ -1,0 +1,26 @@
+
+<div style="font-size: 20px; text-align: center;"><b>Upcoming Trainings: </b> </div><br><br>
+<table border="1">
+    <tr>
+        <th><b>Title</b></th>
+        <th><b>Topic</b></th>
+        <th><b>Max Trainees</b></th>
+        <th><b>Start Date</b></th>
+        <th><b>End Date</b></th>
+        <th><b>Trainer Name</b></th>
+        <th><b>Venue</b></th>
+    </tr>
+@for(details of data;track details.title){
+    <tr>
+        <td>{{details.title}}</td>
+        <td>{{details.topic}}</td>
+        <td>{{details.maxTrainees}}</td>
+        <td>{{details.startDate}}</td>
+        <td>{{details.endDate}}</td>
+        <td>{{details.trainerName}}</td>
+        <td>{{details.venue}}</td>
+    </tr>
+
+}
+</table>
+
