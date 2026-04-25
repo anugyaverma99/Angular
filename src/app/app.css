@@ -23,3 +23,7 @@
 .bg-pink{
     background-color: pink;
 }
+div{
+    display: flex;
+    justify-content: space-evenly;
+}

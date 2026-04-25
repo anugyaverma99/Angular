@@ -1,16 +1,26 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, signal, ViewChild } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { UserDetails } from './components/user-details/user-details';
 import { LaptopDetails } from './components/laptop-details/laptop-details';
 import { FormsModule } from '@angular/forms';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { CustomerList } from './components/customer-list/customer-list';
+import { CDRParent } from './components/cdrparent/cdrparent';
+import { Rxjs } from './components/rxjs/rxjs';
+import { UsersList } from './components/users-list/users-list';
+import { Pagination } from './components/pagination/pagination';
+import { TripDetails } from './components/trip-details/trip-details';
+import { ParentSignal } from './components/parent-signal/parent-signal';
+import { Userlistjson } from './userlistjson/userlistjson';
+import { FruitList } from './components/fruit-list/fruit-list';
+import { TemplateDrivenForm } from './components/template-driven-form/template-driven-form';
+import { TrainingData } from './components/training-data/training-data';
 
 // these import are for typescrit complier
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,CustomerList,FormsModule,DatePipe,CurrencyPipe], // this is for angular import
+  imports: [RouterOutlet,CustomerList,FormsModule,DatePipe,CurrencyPipe,CDRParent,Rxjs,UsersList,Pagination,TripDetails,ParentSignal,Userlistjson,RouterLink,FruitList,TemplateDrivenForm,TrainingData,CommonModule], // this is for angular import
   templateUrl: './app.html', 
   // in order to have html and typescript in a ingle file you can write it directly instead of giving template url 
   //  template:` YOUR HTML STRUCTURE ENTIRELY`
@@ -25,6 +35,7 @@ export class App {
     age:22,
     phoneNumbers:[123,456]
   };
+  
   date=new Date()
   
 
@@ -50,6 +61,7 @@ parentAction(data:any){
   console.log("parent has recieved data for action",data);
 }
 
+
 laptopDetails=[
   {id:1,brand:"apple",price:123212,img:"https://img.freepik.com/free-photo/laptop-with-sun-background_1232-429.jpg"},
   {id:2,brand:"hp",price:350000,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-qEmJnHJH1nUQHteF1Gs_O4iwAqYlYJQ-aDuIm00d7A1TgYMfHzLSRZQ&s"},
@@ -57,25 +69,30 @@ laptopDetails=[
   {id:4,brand:"lenovo",price:324354,img:"https://img.freepik.com/free-photo/laptop-with-sun-background_1232-429.jpg"},
   {id:5,brand:"asus",price:6565656,img:"https://img.freepik.com/free-photo/laptop-with-sun-background_1232-429.jpg"}
 ]
-
+isSearch=false;
 customerData:any[]=[];
   constructor(){
     console.log("constructor")
-    this.start=this.start;
+    this.customerData=this.customers.slice(this.start,this.start+this.pageSize);
+    this.start=this.start+this.pageSize;
   }
 previousData(){
-  console.log("previous")
+  console.log(this.customerData);
+  this.isSearch=false;
   if(this.start>0){
     this.start=this.start-this.pageSize;
-    this.customerData=this.customers.slice(this.start,this.start+this.pageSize);
+    this.customerData=this.customers.slice(this.start-this.pageSize,this.start);
   }
 
 }
 nextData(){
-  console.log("next")
-  if(this.start+this.pageSize<=this.customers.length){
-    this.start=this.start+this.pageSize;
+  console.log(this.customerData);
+  this.isSearch=false
+  
+  if(this.start<=this.customers.length){
     this.customerData=this.customers.slice(this.start,this.start+this.pageSize);
+    this.start=this.start+this.pageSize;
+    console.log(this.start);
   }
 
 }
@@ -100,15 +117,36 @@ customers=[
 
 
 ]
-filteredCustomers = this.customers;
 searchName: any;
+searchCustomer:any[]=[];
 
 onSearch() {
-  this.filteredCustomers = this.customers.filter(c =>
+this.isSearch=true;
+  this.searchCustomer = this.customerData.filter(c =>
     c.name.toLowerCase().includes(this.searchName.toLowerCase())
   );
  
 }
+pageChanged(num:any){
+  console.log("page changed to "+num)
+}
+// @ViewChild('rxInput')inputElement:elementRef 
+data:any[]=[]
+recieveData(data:any){
+  console.log("Data recieved in parent")
+}
+isLoggedIn=false;
+ role:string=''
+ username:string=''
+ password:string=''
+submit(){
+  this.isLoggedIn=true;
+  console.log(this.role);
+  
+
+}
+
+
 
 }
 

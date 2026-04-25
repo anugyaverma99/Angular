@@ -1,0 +1,35 @@
+<h2 style="text-align: center;"> Training Details</h2>
+<div>
+    <form  (ngSubmit)="onSubmit(trainingDetails)" #trainingDetails="ngForm" >
+        
+        <strong>Title: </strong><input type="text" name="title" placeholder="title" [(ngModel)]="training.title" required #triptitlemodel=ngModel><br>
+        @if(triptitlemodel.invalid && triptitlemodel.touched){
+            <p>Invalid input </p>
+        }
+        <strong>Topic: </strong><input type="text" name="topic" placeholder="topic" [(ngModel)]="training.topic" required #triptopicmodel="ngModel"><br>
+        @if(triptopicmodel.invalid && triptopicmodel.touched){
+            <p>Invalid input </p>
+        }
+        <strong>Maximum Trainees: </strong><input type="number" name="maxTrainees"placeholder="maxtrainees"[(ngModel)]="training.maxTrainees" required #tripmaxmodel="ngModel"><br>
+        @if(tripmaxmodel.invalid && tripmaxmodel.touched){
+            <p>Invalid input </p>
+        }
+        <strong>Start date: </strong><input type="date" name="startDate" placeholder="start date"[(ngModel)]='training.startDate' required #tripstartdatemodel="ngModel"><br>
+        @if(tripstartdatemodel.invalid && tripstartdatemodel.touched ){
+            <p>Invalid input </p>
+        }
+        <strong>End date: </strong><input type="date" name="endDate" placeholder="end date"[(ngModel)]='training.endDate' required #tripenddatemodel="ngModel"><br>
+        @if(tripenddatemodel.invalid && tripenddatemodel.touched){
+            <p>Invalid input </p>
+        }
+        <strong>Trainer Name: </strong><input type="text" name="trainerName" placeholder="trainer name"[(ngModel)]="training.trainerName" required #triptrainermodel="ngModel"><br>
+        @if(triptrainermodel.invalid && triptrainermodel.touched){
+            <p>Invalid input </p>
+        }
+        <strong>Venue: </strong><input type="text" name="venue" placeholder="venue"[(ngModel)]="training.venue" required #tripvenuemodel="ngModel"><br>
+        @if(tripvenuemodel.invalid && tripvenuemodel.touched){
+            <p>Invalid input </p>
+        }
+        <button type="submit" [disabled]="trainingDetails.invalid" >add</button>
+    </form>
+</div>

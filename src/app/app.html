@@ -86,10 +86,60 @@ your name: {{like}}
 <button (click)="showNext()" [disabled]="start+pageSize>=laptopDetails.length">Next</button>
 
 <app-laptop-details [laptopDetails]="laptopDetails"></app-laptop-details> -->
-<input placeholder="write the customer name to search" [(ngModel)]="searchName"(input)="onSearch()">
+<!-- <input placeholder="write the customer name to search" [(ngModel)]="searchName"(input)="onSearch()" #rxInput> -->
 <!-- <app-customer-list [customerData]="filteredCustomers"></app-customer-list> -->
-<app-customer-list [customerData]="filteredCustomers.slice(start, start + pageSize)"></app-customer-list>
-<button (click)="previousData()" [disabled]="start==0">prev</button>
-<button (click)="nextData()" [disabled]="start+pageSize>=filteredCustomers.length">Next</button>
+ <!-- <app-customer-list [customerData]="customerData" [searchCustomer]="searchCustomer" [isSearch]="isSearch"></app-customer-list>
 
-<router-outlet />
+<button (click)="previousData()" [disabled]="start-pageSize==0">prev</button>
+<button (click)="nextData()" [disabled]="start>=customers.length">Next</button>  -->
+<!-- <app-cdrparent></app-cdrparent> -->
+<!-- <app-users-list></app-users-list> -->
+<!-- <app-rxjs></app-rxjs> -->
+<!-- <app-pagination [maxPages]="4"(onPageChange)="pageChanged($event)"></app-pagination> -->
+<!-- <app-trip-details></app-trip-details> -->
+<!-- <app-parent-signal></app-parent-signal> -->
+ <!-- <a routerLink="userlistjson">user list</a> -->
+<!-- <app-userlistjson></app-userlistjson> -->
+
+<!-- <app-fruit-list></app-fruit-list> -->
+ <!-- <div>
+ <a routerLink="home">home</a>
+ <a routerLink="tripDetails">trip Details</a>
+ <a routerLink="fruitList">fruits page</a>
+ </div>
+<router-outlet></router-outlet> -->
+
+<!-- direct child call -->
+
+<!-- <app-template-driven-form (data)="recieveData($event)"></app-template-driven-form>
+
+<app-training-data [data]="data"></app-training-data> -->
+
+<!-- through routing -->
+
+ @if(isLoggedIn){
+<h1 style="text-align:center">Home page</h1>
+<div style="display:flex; justify-content:space-evenly">
+<a routerLink="trainingDetailsForm">Training Details Form</a>
+@if(role==='manager'){
+<a routerLink="trainingData"  >Upcoming Trainings</a>
+}
+</div>
+<router-outlet></router-outlet>
+ }
+ @else{ <h1 style="text-align: center;"> Register to our Portal</h1>
+
+ <form  (ngSubmit)="submit()" #form="ngForm">
+  <strong>Username: </strong><input type="text" name='username'required  [(ngModel)]="username"><br>
+  <strong>Password: </strong><input type="password" name="password" required [(ngModel)]="password"><br>
+  
+
+  <strong>Role: </strong>
+  <select name="role"[(ngModel)]='role'required>
+    <option >user</option>
+    <option>manager</option>
+  </select><br>
+  <button type="submit" [disabled]="form.invalid" >register</button>
+
+ </form>
+ }
